@@ -716,7 +716,7 @@ void GetMultiArg(char **argv, int idx, const char *fmt, ...)
   cptr[0] = '\0';    /* Init error message buffer       */
   arg = argv[idx+i];
   va_start(ap, fmt); /* point to first element after fmt*/
-  while(*p && arg != '\0'){
+  while(*p && *arg != '\0'){
     if (isalpha((int)*p))
       dest = va_arg(ap, void*);
     switch(tolower((int)*p)){

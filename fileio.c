@@ -739,7 +739,7 @@ int GetMultiFileOption(char *line, const char *key, const char *fmt, ...)
   optional = NO;
   va_start(ap, fmt);
   /* point to first element after fmt*/
-  while (*p && arg != '\0') {
+  while (*p && *arg != '\0') {
     if (isalpha((int)*p))
       dest = va_arg(ap, void*);
     switch (tolower((int)*p)) {
@@ -1630,7 +1630,7 @@ int ReadNodes(struct Graph *gptr, UNSIGNED *dformat, struct FileInfo *finfo)
 char *ReadGraph(char *cptr, UNSIGNED *dformat, struct Graph *gptr,
 		struct FileInfo *finfo, struct Parameters *parameters)
 {
-  if (!((cptr = strchr(cptr, ':')) == NULL || (cptr = strnspc(cptr+1))== '\0'))
+  if (!((cptr = strchr(cptr, ':')) == NULL || *(cptr = strnspc(cptr+1)) == '\0'))
     gptr->gname = strdup(cptr); /* Get the name of the graph */
 
   if (parameters->memorysave)
